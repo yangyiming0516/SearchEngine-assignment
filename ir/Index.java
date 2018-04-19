@@ -11,6 +11,8 @@ package ir;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public interface Index {
 
@@ -35,12 +37,14 @@ public interface Index {
 	
     public HashMap<String, String> docIDs = new HashMap<String,String>();
     public HashMap<String,Integer> docLengths = new HashMap<String,Integer>();
-
+	public HashMap<String,Double> normal = new HashMap<String,Double>();
+	public Set<Map.Entry<String,PostingsList>> getSet();
     public void insert( String token, int docID, int offset );
+	public void insertBI( String token1, String token2, int docID, int offset );
     public Iterator<String> getDictionary();
     public PostingsList getPostings( String token );
     public PostingsList search( Query query, int queryType, int rankingType, int structureType );
     public void cleanup();
-
+	public void process();
 }
 		    

@@ -1,4 +1,4 @@
-   Contemporary email addresses consist of a "local part" separated
+﻿   Contemporary email addresses consist of a "local part" separated
    from a "domain part" (a fully-qualified domain name) by an at-sign
    ("@").  The syntax of the domain part corresponds to that in the
    previous section.  The concerns identified in that section about

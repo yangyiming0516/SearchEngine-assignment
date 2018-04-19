@@ -1,1 +1,1 @@
-java -cp classes;pdfbox -Xmx1g ir.SearchGUI -d c:\davisWiki -l ir17.gif -p patterns.txt
+java -XX:+UseG1GC -Xmx4096m -cp classes;pdfbox -Xmx1g ir.SearchGUI -d davisWiki -l ir17.gif -p patterns.txt

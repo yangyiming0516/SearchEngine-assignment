@@ -8,7 +8,36 @@
 // As you have probably already understood, lines beginning
 // with "//" are comments.
 
+
+// ADD YOUR PATTERNS HERE
+
+//URL
+((http|https):\/\/).*[\w\/]+
+
+//email
+(?:[\w-.])*[\w-.]+@(?:[\w-.])*[\w-.]+
+
+//ordinal number and decades
+\d+(th|st|nd|rd|s)
+
+//n10
+\p{Alpha}+\d+
+
+//a'b  a.b  a.b.
+\p{Alpha}+['.]\p{Alpha}+\.?
+
+//a-b
+(\w+-)+\w+
+
 // Twenty-four seven
 \d+/\d+
 
-// ADD YOUR PATTERNS HERE
+//number
+[+-]?(\d*[-.:,])*\d+
+
+//'em
+'em
+
+//--
+--
+

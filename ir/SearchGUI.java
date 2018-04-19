@@ -338,16 +338,19 @@ public class SearchGUI extends JFrame {
      *   corrupt the index).
      */
     private void index() {
-	indexer = new Indexer( patterns_file );
+		indexer = new Indexer( patterns_file );
 	synchronized ( indexLock ) {
-	    resultWindow.setText( "\n  Indexing, please wait..." );
+	    resultWindow.setText( "\n  Indexing , please wait..." );
 	    for ( int i=0; i<dirNames.size(); i++ ) {
 		File dokDir = new File( dirNames.get( i ));
 		indexer.processFiles( dokDir );
-	    }
-	    indexer.index.cleanup();
+		}
 	    resultWindow.setText( "\n  Done!" );
-	}
+		
+		}
+
+		indexer.index.process();
+
     };
 
 

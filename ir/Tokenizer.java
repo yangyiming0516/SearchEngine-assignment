@@ -275,7 +275,10 @@ public class Tokenizer {
 	    // for non-standard words
 	    for ( Pattern p : patterns ) {
 		Matcher m = p.matcher( s );
+		//System.err.println(s);
+		//System.err.println(p.pattern());
 		if ( m.find() ) {
+			//System.err.println("match!");
 		    // The string contains a non-standard word. First check the prefix 
 		    // before the matching substring, then add the non-standard word  
 		    // to the token queue, then check the remainder of the string.

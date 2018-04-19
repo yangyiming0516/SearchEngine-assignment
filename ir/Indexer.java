@@ -68,8 +68,10 @@ public class Indexer {
 		//System.err.println( "Indexing " + f.getPath() );
 		// First register the document and get a docID
 		int docID = generateDocID();
-		if ( docID%1000 == 0 ) System.err.println( "Indexed " + docID + " files" );
-		index.docIDs.put( "" + docID, f.getName() );
+		if ( docID%100 == 0 ){
+			System.err.println( "Indexed " + docID + " files" );
+		}
+		index.docIDs.put( (""+docID).intern(), f.getName() );
 		try {
 		    //  Read the first few bytes of the file to see if it is 
 		    // likely to be a PDF 
@@ -94,12 +96,21 @@ public class Indexer {
 		    }
 		    Tokenizer tok = new Tokenizer( reader, true, false, true, patterns_file );
 		    int offset = 0;
+			String last=" ";
+			//System.err.println("Indexing Token");
 		    while ( tok.hasMoreTokens() ) {
-			String token = tok.nextToken();
-			insertIntoIndex( docID, token, offset++ );
+			String token = tok.nextToken().intern();
+			//System.err.println( "Indexing " + f.getPath() );
+			//System.err.println(token);
+			insertIntoBI(docID, last.intern(), token.intern(), offset-1);
+			//System.err.println(last+" "+token+" "+(offset-1));
+			insertIntoIndex( docID, token.intern(), offset++ );
+			//System.err.println(token+" "+(offset-1));
+			last = token;
 		    }
-		    index.docLengths.put( "" + docID, offset );
+		    index.docLengths.put( (""+docID).intern(), offset );
 		    reader.close();
+			//System.err.println("Closed");
 		}
 		catch ( IOException e ) {
 		    System.err.println( "Warning: IOException during indexing." );
@@ -107,7 +118,7 @@ public class Indexer {
 	    }
 	}
     }
-
+	
     
     /* ----------------------------------------------- */
 
@@ -135,7 +146,11 @@ public class Indexer {
      *  Indexes one token.
      */
     public void insertIntoIndex( int docID, String token, int offset ) {
-	index.insert( token, docID, offset );
+	index.insert( token.intern(), docID, offset );
+    }
+	
+	public void insertIntoBI( int docID, String token1, String token2, int offset ) {
+	index.insertBI( token1.intern(), token2.intern(), docID, offset );
     }
 }
 	

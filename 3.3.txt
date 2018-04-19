@@ -1,0 +1,23 @@
+original:
+zombie attack   0.324ms   6.18   4.33
+money transfer  3.438ms   2.48   4.13
+sleeping on campus 80.818ms 4.64 0 1.79
+graduate program mathematics 3.956ms  2.89 2.48 4.91
+
+threshold 0.5
+zombie attack  0.338ms
+money transfer 3.790ms
+sleeping on campus 9.534ms
+graduate program mathematics 5.374ms
+
+threshold 1
+zombie attack  0.32ms
+money transfer 3.4ms
+sleeping on campus 8.32ms
+graduate program mathematics 5.04ms
+
+threshold 3
+zombie attack  0.41ms
+money transfer 0.288ms
+sleeping on campus 0.236ms
+graduate program mathematics 0.142ms
